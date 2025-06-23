@@ -20,6 +20,25 @@ By the end of this tutorial, you will have a fully functional email server, whic
 ---
 
 ## Prerequisites
+1. Set the Hostname (Temporary and Permanent)
+
+Temporary (until reboot):
+sudo hostname alian
+Permanent (persists after reboot):
+Edit the /etc/hostname file:
+sudo nano /etc/hostname
+Delete any existing content and add:
+alian
+Save the file (Ctrl+O, Enter) and exit nano (Ctrl+X).
+
+2. Configure the Domain Name and Hostname in /etc/hosts
+This file maps IP addresses to hostnames and is crucial for local name resolution.
+sudo nano /etc/hosts
+You'll typically see entries like 127.0.0.1 localhost. Add or modify lines to include your new hostname and domain name. A common setup would look like this:
+
+127.0.0.1       localhost
+127.0.1.1       alian.alian.com alian
+
 
 ### Hardware Requirements
 Before proceeding, ensure you have the following:
