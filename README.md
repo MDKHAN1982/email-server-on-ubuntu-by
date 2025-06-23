@@ -74,7 +74,7 @@ The first step in setting up your email server is to ensure your server is up-to
     sudo apt install postfix
     ```
 
-2. **Configuring Postfix**:
+2. **Configuring Postfix**: or reconfig postfix :    sudo dpkg-reconfigure postfix 
 
     During the installation process, you’ll be prompted to configure Postfix:
     - Choose **"Internet Site"** when asked for the mail server type.
