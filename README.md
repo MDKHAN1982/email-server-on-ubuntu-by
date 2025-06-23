@@ -18,7 +18,6 @@ We will be using open-source technologies such as:
 By the end of this tutorial, you will have a fully functional email server, which can handle both incoming and outgoing emails with no third-party limitations. You’ll also be able to manage emails via the web interface using Roundcube.
 
 ---
-
 ## Prerequisites
 1. Set the Hostname (Temporary and Permanent)
 
