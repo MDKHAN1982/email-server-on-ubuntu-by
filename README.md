@@ -170,7 +170,22 @@ Now that Postfix and Dovecot are handling email transport and retrieval, we need
 
 2. During the installation, you’ll be asked to configure the Roundcube database. Select "Yes" and enter the **MySQL root password** when prompted.
 
----
+--- REMOVING ROUNDCUBE
+# Find Roundcube package name
+dpkg --get-selections | grep -i roundcube
+
+# Remove the package
+sudo apt-get remove <package name>
+
+# Remove Roundcube files
+sudo rm -rf /var/www/html/roundcubemail
+
+# Remove or comment out Apache configuration
+sudo rm /etc/apache2/conf.d/roundcubemail.conf
+sudo systemctl restart apache2
+
+# Restart Nginx
+sudo systemctl restart nginx
 
 ## Step 5: Configure Roundcube to Work with Postfix and Dovecot
 
