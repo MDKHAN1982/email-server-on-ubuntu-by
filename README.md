@@ -171,22 +171,27 @@ Now that Postfix and Dovecot are handling email transport and retrieval, we need
 2. During the installation, you’ll be asked to configure the Roundcube database. Select "Yes" and enter the **MySQL root password** when prompted.
 
 --- REMOVING ROUNDCUBE
-# Find Roundcube package name
-dpkg --get-selections | grep -i roundcube
-
-# Remove the package
-sudo apt-get remove <package name>
-
-# Remove Roundcube files
-sudo rm -rf /var/www/html/roundcubemail
-
-# Remove or comment out Apache configuration
-sudo rm /etc/apache2/conf.d/roundcubemail.conf
-sudo systemctl restart apache2
-
-# Restart Nginx
-sudo systemctl restart nginx
-
+Steps to remove Roundcube and MySQL database:
+1. Remove Roundcube files:
+If you installed Roundcube using a package manager (like apt on Debian/Ubuntu), use the appropriate command to remove it (e.g., apt remove roundcube on Debian/Ubuntu). 
+If you installed it manually, remove the Roundcube installation directory. 
+2. Remove the MySQL database:
+Using command line:
+Log in to your MySQL server using the command mysql -u root -p. 
+Enter your MySQL root password. 
+Find the database name (e.g., roundcube or da_roundcube). 
+Execute the following command to drop the database: DROP DATABASE database_name; (replace database_name with the actual name). 
+If you also need to remove the MySQL user associated with the database, use the command: DROP USER 'user'@'localhost'; (replace user with the actual user). 
+Using phpMyAdmin (if applicable):
+Access phpMyAdmin. 
+Select the Roundcube database. 
+Go to the "Operations" tab. 
+Click "Drop the database (DROP)" and confirm. 
+3. Disable or remove Roundcube from webserver (Apache/Nginx):
+If you are using Nginx, you may need to remove the Roundcube configuration file or comment out the include line in the main configuration file. 
+If you are using Apache, you may need to disable or remove the Roundcube virtual host file. 
+4. Restart webserver:
+After making changes to the webserver configuration, restart the webserver (e.g., sudo service nginx restart or sudo service apache2 restart). 
 ## Step 5: Configure Roundcube to Work with Postfix and Dovecot
 
 1. **Edit Roundcube's configuration file**:
